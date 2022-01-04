@@ -70,3 +70,23 @@ Under "SPONSORS ADD INFO HERE" heading below, include the following:
 This repo will be made public before the start of the contest. (C4 delete this line when made public)
 
 [ ⭐️ SPONSORS ADD INFO HERE ]
+
+#setup
+```
+yarn
+```
+
+then, create .key and .infuraKey files.
+
+In .key file, input your private key of your address for test
+In .infuraKey, input your infura API key
+
+
+```
+npx hardhat test
+```
+
+```
+npx hardhat coverage
+```
+
