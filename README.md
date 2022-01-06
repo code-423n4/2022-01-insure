@@ -41,7 +41,7 @@ InsureDAO is an open insurance protocol where users can create, buy, and sell in
 
 # Documents
 There are three documentations with different level of details.
-1. [Landing Page](https://insuredao.fi/): good to understand whit InsureDAO is.
+1. [Landing Page](https://insuredao.fi/): good to understand what InsureDAO is.
 2. [General Document](https://insuredao.gitbook.io/insuredao/): InsureDAO functions
 3. [Dev Document](https://insuredao.gitbook.io/developers): code specification
 
@@ -50,7 +50,7 @@ Feel free to ask any question on the Code4rena InsureDAO channel!
 # Prior Audit Reports
 - [Solidified](https://drive.google.com/drive/u/0/folders/1XaLncO353oHYMZaTh1Z28NTehrkNHuJY)
 - [QuantStamp](https://drive.google.com/drive/u/0/folders/1XaLncO353oHYMZaTh1Z28NTehrkNHuJY)
-- PeckShield (up coming)
+- PeckShield (upcoming)
 
 
 # setup
