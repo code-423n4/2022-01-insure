@@ -1,0 +1,174 @@
+==============================================================
+Guild: Code4rena
+Channel: ARCHIVE-Q1-2022 / ☑insure-jan7
+==============================================================
+
+[01/05/2022 3:42 PM] itsmetechjay
+👋 Hello and welcome to the contest channel for the $53K USDC + $27K INSURE ** Insure** contest!
+
+📆 Contest opens January 7, 2022, at 0:00 UTC and runs through January 13, 2022 at 23:59 UTC (7 days).
+
+Please give a warm welcome to the Insure team, particularly @Oishun and @kohshiba who will be available for questions either here in channel or via DM. 
+
+We'll be posting relevant links, documentation, etc. here, so if you intend to participate in this contest, consider enabling notifications for this channel. 🐺 ⏰
+
+{Reactions}
+🎉 (2) 
+
+[01/05/2022 11:11 PM] cloudellie
+Hey wardens, apologies for the late notice, but we are going to push back the start time for this contest (new time to be confirmed, but I would expect at least 24 hours) to give the Insure team a little more time to set up their repo. We try to avoid doing this whenever possible, but we also want to ensure that you all have the best possible information and context to work with! Thanks so much for your patience 🐺 :cyberheart:
+
+{Reactions}
+🐺 (6) 
+
+[01/06/2022 3:16 PM] cloudellie
+Update: we should be ready to launch this later today. Will keep y'all posted!
+
+{Reactions}
+🚀 (2) 
+
+[01/06/2022 3:44 PM] itsmetechjay
+Update: we will launch at midnight UTC - in about ~8 hours.
+
+{Reactions}
+🔥 (2) 👏 (2) 
+
+[01/07/2022 1:24 AM] Tom | Aztec#3331
+@kohshiba Can you give some info on what's expected to be included in a the merkle trees submitted to markets when an incident occurs?
+
+
+[01/07/2022 1:28 AM] Tom | Aztec#3331
+i.e. why is inclusion in the merkle tree necessary since it seems that all required data is available onchain. Also under what circumstances would we go down the `keccak256(abi.encodePacked(_insurance.target, address(0)))` path here? https://github.com/code-423n4/2022-01-insure/blob/19d1a7819fe7ce795e6d4814e7ddf8b8e1323df3/contracts/PoolTemplate.sol#L568-L582
+
+
+[01/07/2022 3:38 AM] kohshiba
+merkle tree is used to verify whether an insurance policy holder is eligible to redeem. 
+a raw data before merkle looks like:
+```
+ [
+        { id: "0x...", account: "0x..." },
+        { id: "0x...", account: "0x..." },
+        { id: "0x...", account: "0x..." },
+        { id: "0x...", account: "0x..." },
+        { id: "0x...", account: "0x..." },
+];
+```
+We only allow when the account has an eligible insurance policy (hashed data of insurance ID and  account address)
+
+
+[01/07/2022 3:40 AM] kohshiba
+>under what circumstances would we go down the keccak256(abi.encodePacked(_insurance.target, address(0))) path here?
+Sometimes, a pool allows all insurance policy holders to redeem. The path of address zero is used in such case
+
+
+[01/07/2022 4:25 AM] Oishun#3920
+Thank you code4rena managers and wardens 😆 
+InsureDAO devs are here (our timezone is **JST**), so feel free to ping and ask anything!
+
+
+[01/07/2022 11:39 AM] Tom | Aztec#3331
+I'm clear on the structure of the data as that can be seen from the code. I'm more interested in the decision making on why this tree exists and what goes into it - considering claims are being made against a relatively small number of targets and the target associated with a policy is onchain then policy validity should be verifiable onchain without the need for a merkle tree.
+
+
+[01/08/2022 4:05 AM] Oishun#3920
+When incident happens on a protocol, ReportingDAO (incident oracle) investigate and lists all the victim addresses in general.
+Then, execute applyCover() with its merkle root.
+So, merkle tree contains not only the claimable addresses on InsureDAO, but also the non insurance holder.
+
+
+[01/08/2022 9:33 AM] Oishun#3920
+does this make sense?
+
+
+[01/08/2022 5:12 PM] danb#6193
+what are attributions and credits?
+
+
+[01/09/2022 2:36 AM] dravee
+Hello! Sorry if the question is stupid... But are contracts that are named "*Template.sol" functionally meant to be inherited at some point? They do implement some interfaces but I'm not sure if they'll have children someday 😅
+
+
+[01/09/2022 5:07 AM] kohshiba
+Adding some info. The thing is that not all policyholders can redeem their policy. ReportingDAO only allow actual victims to redeem, meaning hackers, or other speculators can get eliminated from the list.
+
+
+[01/09/2022 5:09 AM] kohshiba
+>Attributions
+we use `attribution` as internal token of `Vault.sol` Since Vault utilize stored funds and earn from it, the value per attribution may increase. so there will be two bookkeeping systems within the mechanism, one is underwriters LP token(iToken) and the other one is pool's attribution.
+>Credit
+An index pool can leverage the liquidity(allowing fractional collateral) and deploy the liquidity to underlying pools. `credit` is the unit name of indices' liquidity within pools.
+
+
+[01/09/2022 5:19 AM] kohshiba
+NP! yes, `*Template.sol` means they are templates, meaning it can be referred from a proxy contract. InsureDAO's `Factory.sol` can create pools, but each pool is just a proxy contract based on EIP 1167 (https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1167.md) to save gas cost on each creation.
+
+{Embed}
+https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1167.md
+EIPs/eip-1167.md at master · ethereum/EIPs
+The Ethereum Improvement Proposal repository. Contribute to ethereum/EIPs development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q1-2022 - ☑insure-jan7 [928052284179509288].txt_Files/EIPs-4CC51
+
+{Reactions}
+👏 👍 
+
+[01/13/2022 12:35 PM] Oishun#3920
+We are about to end of the audit!
+Thank you for joining InsureDAO contest! :Logo: 
+
+We are going to have next time in here with new implementation, so wardens that have read our code must have advantage from next time :C4Keycap:
+
+{Reactions}
+C4Keycap (4) 
+
+[01/14/2022 12:02 AM] C4
+**🚨 CONTEST ALERT**
+
+@🐺wardens The **Insure** contest is now closed! Huge thanks to everyone who participated🔍, whether you submitted a finding or not.
+
+What's next: Insure's team will review the findings over the next couple of days, and then we'll pass them off to the judge. Keep an eye on #📢announcements for regular updates on how the contest is progressing through awarding 🤑🏆, judging 🧑‍⚖️ and reporting 📜. Feel free to ping an organizer if you have questions along the way!
+
+
+[01/14/2022 2:42 AM] Oishun#3920
+Now we are checking for all issues
+
+{Reactions}
+hi5 (3) 
+
+[01/18/2022 11:40 PM] kenzoagada
+Usually it takes much more than 5 days
+
+{Reactions}
+👑 🤟 hi5 (2) 
+
+[01/19/2022 1:11 AM] Oishun#3920
+Thank you!
+I need one more day👌
+
+
+[02/10/2022 11:08 AM] 0xsmartcontract
+Hi sir , when will finish check ?
+
+
+[02/10/2022 1:37 PM] itsmetechjay
+The sponsor review and awarding process is complete. We are currently working on the final draft of the report.
+
+{Reactions}
+hi5 💯 👑 🥰 🤖 🍴 
+
+[03/02/2022 11:49 AM] 0xsmartcontract
+Hi sir , when will finish check ?
+
+
+[03/02/2022 3:20 PM] itsmetechjay
+We are working with the sponsor on finalizing the report - hope to have that out soon!
+
+{Reactions}
+👍 (2) 👑 
+
+[07/05/2022 6:18 PM] 0x1f8b
+Any update with the payment?
+
+
+==============================================================
+Exported 27 message(s)
+==============================================================
