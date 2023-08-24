@@ -1,8 +1,8 @@
 <img src="https://user-images.githubusercontent.com/40849624/148335534-51637a44-b395-4303-85a0-fff2fa377c04.png" width="500px">
 
 # InsureDAO contest details
-- $42,500 USDC + $24,500 INSURE main award pot
-- $3,000 USDC + $2,000 INSURE gas optimization award pot
+- &#36;42,500 USDC + &#36;24,500 INSURE main award pot
+- &#36;3,000 USDC + &#36;2,000 INSURE gas optimization award pot
 - Join [C4 Discord](https://discord.gg/code4rena) to register
 - Submit findings [using the C4 form](https://code4rena.com/contests/2022-01-insuredao-contest/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
